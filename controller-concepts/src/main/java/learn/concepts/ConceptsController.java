@@ -1,6 +1,9 @@
 package learn.concepts;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController                   // 1
 public class ConceptsController {
@@ -38,7 +41,9 @@ public class ConceptsController {
     }
 
     @PutMapping("/put")
-    public void doPut() {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void doPut(@RequestBody Pet pet) {
+        // do some work
     }
 
     @DeleteMapping("/delete")
