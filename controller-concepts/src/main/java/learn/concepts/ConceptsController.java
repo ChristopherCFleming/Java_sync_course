@@ -11,7 +11,8 @@ public class ConceptsController {
     }
 
     @GetMapping("/get")
-    public void doGet() {
+    public List<String> doGet() {
+        return List.of("apple", "orange", "pear", "grape");
     }
 
     @GetMapping("/product/{name}/more/path")
@@ -20,12 +21,20 @@ public class ConceptsController {
     }
 
     @PostMapping("/post")
-    public void doPost() {
+    public Pet doPost(@RequestBody Pet pet) {
+        return pet;
     }
 
     @PostMapping("/add/{a}/{b}")
     public int add(@PathVariable int a, @PathVariable int b) {
         return a + b;
+    }
+
+    @PostMapping("/urlencoded")
+    public void readFromBody(String name, int age, boolean likesCookies) {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Likes Cookies?: " + likesCookies);
     }
 
     @PutMapping("/put")
@@ -39,5 +48,7 @@ public class ConceptsController {
     @RequestMapping(path = "/multi", method = {RequestMethod.OPTIONS, RequestMethod.TRACE})
     public void handleMultiple() {
     }
+
+
 
 }

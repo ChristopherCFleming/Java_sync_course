@@ -15,11 +15,13 @@ public class PetController {
     }
 
     @PostMapping
-    public void create() {
+    public void create(@RequestBody Pet pet) {
+        System.out.println(pet);
     }
 
     @PutMapping("/{petId}")
-    public void update(@PathVariable int petId) {
+    public void update(@PathVariable int petId, @RequestBody Pet pet) {
+        System.out.println(pet);
     }
 
     @DeleteMapping("/{petId}")
